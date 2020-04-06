@@ -1,0 +1,3 @@
+node_modules/*
+/devdata
+/docs/preview.stg

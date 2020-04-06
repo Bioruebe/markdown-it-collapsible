@@ -1,0 +1,32 @@
+{
+  "name": "markdown-it-collapsible",
+  "version": "1.0.0",
+  "description": "A markdown-it plugin, which adds collapsibles via the HTML <details> and <summary> elements",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint . && mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bioruebe/markdown-it-collapsible"
+  },
+  "author": "bioruebe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bioruebe/markdown-it-collapsible/issues"
+  },
+  "homepage": "https://github.com/bioruebe/markdown-it-collapsible",
+  "keywords": [
+    "markdown",
+    "markdown-it",
+    "markdown-it-plugin"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@bioruebe/eslint-config": "latest",
+    "eslint": "^6.8.0",
+    "markdown-it": "^8.4.2",
+    "markdown-it-testgen": "^0.1.6",
+    "mocha": "^4.1.0"
+  }
+}

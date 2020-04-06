@@ -1,0 +1,7 @@
+{
+	"extends": "@bioruebe/eslint-config",
+	"env": {
+        "node": true,
+		"mocha": true
+    }
+}
