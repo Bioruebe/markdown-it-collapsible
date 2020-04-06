@@ -1,6 +1,6 @@
 # markdown-it-collapsible
 
-> A markdown-it plugin, which adds collapsibles via the HTML <details> and <summary> elements
+> A markdown-it plugin, which adds collapsibles via the HTML `<details>` and `<summary>` elements
 
 ## Preview
 
