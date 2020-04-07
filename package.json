@@ -28,5 +28,8 @@
     "markdown-it": "^8.4.2",
     "markdown-it-testgen": "^0.1.6",
     "mocha": "^4.1.0"
+  },
+  "peerDependencies": {
+    "markdown-it": ">=5"
   }
 }
