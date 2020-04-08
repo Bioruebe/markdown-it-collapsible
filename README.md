@@ -1,4 +1,5 @@
 # markdown-it-collapsible
+![npm](https://img.shields.io/npm/v/markdown-it-collapsible) ![Tests](https://github.com/Bioruebe/markdown-it-collapsible/workflows/Tests/badge.svg) ![markdown-it](https://img.shields.io/npm/dependency-version/markdown-it-collapsible/peer/markdown-it)
 
 > A markdown-it plugin, which adds collapsibles via the HTML `<details>` and `<summary>` elements
 
