@@ -1,3 +1,4 @@
 node_modules/*
 /devdata
 /docs/preview.stg
+.do-devops.json

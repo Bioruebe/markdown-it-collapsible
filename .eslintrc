@@ -1,7 +1,74 @@
 {
-	"extends": "@bioruebe/eslint-config",
+	"extends": ["prettier", "plugin:@typescript-eslint/recommended"],
+	"plugins": ["@typescript-eslint"],
 	"env": {
-        "node": true,
-		"mocha": true
-    }
+		"es2021": true,
+		"node": true
+	},
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module",
+    "ecmaVersion": 12
+  },
+	"rules": {
+		"no-trailing-spaces": [
+			"warn",
+			{ "skipBlankLines": true, "ignoreComments": true }
+		],
+		"no-console": "warn",
+		"prefer-const": "error",
+		"semi": "off",
+		"quotes": [
+			"warn",
+			"double",
+			{ "avoidEscape": true, "allowTemplateLiterals": true }
+		],
+		"no-unused-vars": "off",
+		"curly": ["warn", "multi-line"],
+		"brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+		// our use of `-spec` files for testing prevents us using this
+		"unicorn/filename-case": "off",
+		// reduce has been getting a bad rap lately; its true that often
+		// a filter or map would be clearer and equally as effective but
+		// there are still some legit cases to use reduce
+		"unicorn/no-array-reduce": "off",
+		"unicorn/prevent-abbreviations": "off",
+		"unicorn/no-null": "off",
+		"no-nested-ternary": "off",
+		// doesn't play well with prettier
+		"unicorn/no-nested-ternary": "off",
+		// this is kind of nice sometimes
+		"unicorn/no-array-callback-reference": "off",
+
+		// we need exceptions to be only "warn" because
+		// there are valid use cases for generic variables being
+		// used before being defined
+		"no-use-before-define": ["warn"],
+		"@typescript-eslint/semi": ["error"],
+		"@typescript-eslint/no-unsafe-member-access": "off",
+		"@typescript-eslint/no-unsafe-call": "off",
+		"@typescript-eslint/no-unsafe-assignment": "off",
+		"@typescript-eslint/member-delimiter-style": [
+			"error",
+			{
+				"multiline": {
+					"delimiter": "semi",
+					"requireLast": true
+				},
+				"singleline": {
+					"delimiter": "semi",
+					"requireLast": false
+				}
+			}
+		],
+		// "cases" allows for graceful use of that variable
+		// name in Typescript test cases
+		"@typescript-eslint/no-unused-vars": [
+			"error",
+			{
+				"varsIgnorePattern": "cases|^_",
+				"argsIgnorePattern": "^_"
+			}
+		]
+	}
 }

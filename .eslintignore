@@ -1,4 +1,6 @@
-dist/
-node_modules/
-devdata/
-docs/
+dist
+node_modules
+public
+!.vitepress
+temp
+**/*.js
