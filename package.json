@@ -2,12 +2,19 @@
 	"name": "markdown-it-collapsible",
 	"version": "1.0.0",
 	"description": "A markdown-it plugin, which adds collapsibles via the HTML <details> and <summary> elements",
+
 	"main": "dist/markdown-it-collapsible.cjs.js",
 	"module": "dist/markdown-it-collapsible.es.js",
-	"type": "module",
-	"types": "dist/src/plugin.d.ts",
+	"exports": {
+		"require": "./dist/markdown-it-collapsible.cjs.js",
+		"import": "./dist/markdown-it-collapsible.es.js",
+		"default": "./dist/markdown-it-collapsible.es.js"
+	},
+
+	"types": "./dist/src/plugin.d.ts",
 	"scripts": {
 		"build": "vite build",
+		"watch": "vite build --watch",
 		"test": "vitest",
 		"lint": "eslint src --ext ts --fix --no-error-on-unmatched-pattern",
 		"lint:tsc": "tsc --noEmit"

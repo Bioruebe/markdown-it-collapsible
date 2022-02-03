@@ -15,22 +15,13 @@ export default defineConfig({
 			entry: path.resolve(__dirname, "src/plugin.ts"),
 			formats: ["es", "cjs"],
 		},
-		minify: "esbuild",
-		rollupOptions: {
-			external: ["vue", "mermaid"],
-			output: {
-				globals: {
-					vue: "Vue",
-					router: "VueRouter",
-				},
-			},
-		},
+		minify: "esbuild"
 	},
 	plugins: [dts()],
 
 	// https://github.com/vitest-dev/vitest
 	test: {
-		include: ["test/**/*.test.ts"],
+		include: ["test/**/*.(test|spec).ts"],
 		// environment: "jsdom",
 		api: {
 			port: 4444,
