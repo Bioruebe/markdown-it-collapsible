@@ -4,6 +4,9 @@ import { RenderRule } from "markdown-it/lib/renderer";
 import StateBlock from "markdown-it/lib/rules_block/state_block";
 import Token from "markdown-it/lib/token";
 
+/**
+ * Adds the `<summary>...</summary>` HTML block
+ */
 const renderSummary: RenderRule = (tokens, idx, options, env, slf) => {
 	return (
 		'<summary><span class="pre-summary">&nbsp;</span>' +
@@ -19,14 +22,20 @@ function isWhitespace(state: StateBlock, start: number, end: number) {
 	return true;
 }
 
-const plugin: RuleBlock = (state, startLine, endLine, silent) => {
-	const PLUS_MARKER = 43; // +
-	const RIGHT_CHEVRON_MARKER = 62; // >
+const PLUS_MARKER = 43; // +
+const RIGHT_CHEVRON_MARKER = 62; // >
+
+/**
+ * The core plugin which checks for the appropriate prefix content of
+ * either `+++` (for collapsible block in OPEN state) or `>>>` (for 
+ * collapsible block in CLOSED state).
+ */
+const coreRule: RuleBlock = (state, startLine, endLine, silent) => {
 
 	let isOpen = true;
 	let isClosed = true;
 
-	/** the block content  */
+	/** does the block auto close?  */
 	let autoClosedBlock = false;
 	let start = state.bMarks[startLine] + state.tShift[startLine];
 	let max = state.eMarks[startLine];
@@ -39,7 +48,6 @@ const plugin: RuleBlock = (state, startLine, endLine, silent) => {
 	}
 	// if block doesn't start with OPEN or CLOSED character than ignore
 	if(!isOpen && !isClosed) return false;
-
 	
 	// Check out the rest of the marker string
 	let pos = state.skipChars(start, isOpen ? PLUS_MARKER : RIGHT_CHEVRON_MARKER);
@@ -147,13 +155,21 @@ const plugin: RuleBlock = (state, startLine, endLine, silent) => {
  * **Collapsible Plugin**
  * 
  * Allows markdown authors to create a block of content which can be toggled between
- * an open and closed state.
+ * an open and closed state. Use `+++` for an open starting state and `>>>` for a 
+ * closed starting state.
+ * ```md
+ * +++ My Section (which starts OPEN)
+ * - one
+ * - two
+ * +++
+ * ```
  */
 const collapsiblePlugin: PluginSimple = (md) => {
-	md.block.ruler.before("fence", "collapsible", plugin, {
+	md.block.ruler.before("fence", "collapsible", coreRule, {
 		alt: ["paragraph", "reference", "blockquote", "list"],
 	});
 	md.renderer.rules.collapsible_summary = renderSummary;
+
 };
 
 export default collapsiblePlugin;
