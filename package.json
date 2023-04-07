@@ -1,0 +1,47 @@
+{
+  "name": "markdown-it-plugin-template",
+  "version": "1.0.0",
+  "description": "A template for markdown-it plugins",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "vitest",
+    "build": "tsc && vite build",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bioruebe/markdown-it-plugin-template"
+  },
+  "author": "bioruebe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bioruebe/markdown-it-plugin-template/issues"
+  },
+  "homepage": "https://github.com/bioruebe/markdown-it-plugin-template",
+  "keywords": [
+    "markdown",
+    "markdown-it",
+    "markdown-it-plugin"
+  ],
+  "files": [
+    "dist",
+	"docs",
+    "!**/*.spec.*",
+    "!test",
+    "LICENSE",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/markdown-it": "latest",
+    "markdown-it": "latest",
+    "typescript": "^5.0.3",
+    "vite": "^4.0.0",
+    "vite-plugin-dts": "^2.1.0",
+    "vitest": "^0.29.8"
+  },
+  "peerDependencies": {
+    "markdown-it": ">=5"
+  }
+}
