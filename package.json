@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "vitest",
-    "build": "tsc && vite build",
+    "build": "tsc",
     "test": "vitest run",
     "coverage": "vitest run --coverage"
   },
