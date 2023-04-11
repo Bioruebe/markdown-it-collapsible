@@ -52,6 +52,7 @@ function createTestDefinitions() {
 		}
 
 		output = output.replace(/\r/g, "");
+		output = output.replace(/\t/g, "");
 		let tests = suites[suite];
 		if (!tests) tests = suites[suite] = [];
 
