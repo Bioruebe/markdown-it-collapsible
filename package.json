@@ -1,10 +1,14 @@
 {
   "name": "markdown-it-collapsible",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A markdown-it plugin, which adds collapsibles via the HTML <details> and <summary> elements",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "eslint . && mocha"
+    "dev": "vitest",
+    "build": "tsc",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -21,13 +25,21 @@
     "markdown-it",
     "markdown-it-plugin"
   ],
-  "dependencies": {},
+  "files": [
+    "dist",
+    "docs",
+    "!**/*.spec.*",
+    "!test",
+    "LICENSE",
+    "README.md"
+  ],
   "devDependencies": {
-    "@bioruebe/eslint-config": "latest",
-    "eslint": "^6.8.0",
-    "markdown-it": "^8.4.2",
-    "markdown-it-testgen": "^0.1.6",
-    "mocha": "^4.1.0"
+    "@types/markdown-it": "latest",
+    "markdown-it": "latest",
+    "typescript": "^5.0.3",
+    "vite": "^4.0.0",
+    "vite-plugin-dts": "^2.1.0",
+    "vitest": "^0.29.8"
   },
   "peerDependencies": {
     "markdown-it": ">=5"
