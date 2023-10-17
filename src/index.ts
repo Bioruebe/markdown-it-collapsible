@@ -8,7 +8,7 @@ const MARKER = 43; // +
 const MARKER_OPEN = 62; // >
 
 function renderSummary(tokens: Token[], idx: number, options: any, env: any, self: Renderer) {
-	const title = self.renderInline(tokens[idx].children as Token[], options, env);
+	const title = self.render(tokens[idx].children!, options, env);
 	return `<summary><span class="details-marker">&nbsp;</span>${title}</summary>`;
 }
 
@@ -114,10 +114,21 @@ function parseCollapsible(state: StateBlock, startLine: number, endLine: number,
 	token.map = [startLine, nextLine];
 	if (isOpen) token.attrSet("open", "");
 
-	const tokens: Token[] = [];
-	state.md.inline.parse(params, state.md, state.env, tokens);
+	// Tokenize the summary content
+	let tokens: Token[] = [];
+
+	// It doesn't make sense to have block level elements inside the summary,
+	// except for headings. Thus, a simple check is performed to see if the
+	// summary content is a heading.
+	if (params.match(/^#{1,6}/)) {
+		tokens = state.md.parse(params, state.env);
+	}
+	// Otherwise, we parse everything as inline
+	else {
+		state.md.inline.parse(params, state.md, state.env, tokens);
+	}
+
 	token = state.push("collapsible_summary", "summary", 0);
-	
 	token.content = params;
 	token.children = tokens;
 
