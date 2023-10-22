@@ -1,7 +1,7 @@
 import type MarkdownIt from "markdown-it";
 import type Renderer from "markdown-it/lib/renderer";
 import type StateBlock from "markdown-it/lib/rules_block/state_block";
-import type Token from "markdown-it/lib/token";
+import Token from "markdown-it/lib/token";
 
 
 const MARKER = 43; // +
@@ -9,7 +9,7 @@ const MARKER_OPEN = 62; // >
 
 function renderSummary(tokens: Token[], idx: number, options: any, env: any, self: Renderer) {
 	const title = self.render(tokens[idx].children!, options, env);
-	return `<summary><span class="details-marker">&nbsp;</span>${title}</summary>`;
+	return `<summary>${title}</summary>`;
 }
 
 function skipMarker(state: StateBlock, start: number) {
@@ -116,16 +116,22 @@ function parseCollapsible(state: StateBlock, startLine: number, endLine: number,
 
 	// Tokenize the summary content
 	let tokens: Token[] = [];
+	const markerToken = new Token("collapsible_marker", "span", 1);
+	markerToken.attrs = [["class", "details-marker"]];
+	const markerTokens = [markerToken, new Token("collapsible_marker", "span", -1)];
 
 	// It doesn't make sense to have block level elements inside the summary,
 	// except for headings. Thus, a simple check is performed to see if the
 	// summary content is a heading.
 	if (params.match(/^#{1,6}/)) {
 		tokens = state.md.parse(params, state.env);
+		const headingToken = tokens.shift();
+		if (headingToken) tokens.unshift(headingToken, ...markerTokens);
 	}
 	// Otherwise, we parse everything as inline
 	else {
 		state.md.inline.parse(params, state.md, state.env, tokens);
+		tokens.unshift(...markerTokens);
 	}
 
 	token = state.push("collapsible_summary", "summary", 0);
