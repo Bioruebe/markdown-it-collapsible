@@ -51,9 +51,7 @@ is interpreted as
 ```html
 <details>
     <summary>
-        <span class="details-marker">
-            &nbsp;
-        </span>
+        <span class="details-marker"></span>
         Click me!
     </summary>
     <p>
@@ -96,38 +94,42 @@ Inner hidden text
 
 ### Example CSS
 
-Modern browser don't need additional styling. For better UX you can add a few lines of CSS:
+Modern browsers don't need additional styling. For better UX you can add a few lines of CSS:
 
 ```css
 summary {
-    outline: none;
-    user-select: none;
-    -moz-user-select: none;
-    cursor: pointer;
+  display: flex;
+  align-items: start;
+  outline: none;
+  list-style: none;
+  user-select: none;
+  cursor: pointer;
 }
 
+summary > h1, summary > h2, summary > h3, summary > h4, summary > h5, summary > h6 {
+  display: inline-block;
+  margin: 0;
+}
 
 details > *:not(summary) {
-    margin-left: 1.25em;
-}
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  margin-left: 1.25rem;
 ```
 
-If you want to customize the marker:
+To make the marker scale with headings, an empty span element is created in the parsed HTML. Style the CSS class `details-marker` in any way you like, for example: 
 
 ```css
-details > summary:first-of-type {
-    list-style-type: none;
+.details-marker::before {
+  content: "▶︎";
+  display: inline-block;
+  margin-right: 0.5ch;
+  flex-shrink: 0;
+  transition: 0.3s;
 }
 
-::-webkit-details-marker {
-    display: none;
-}
-
-details > summary .details-marker:before {
-    content: "\25BA";
-}
-
-details[open] > summary .details-marker:before {
-    content: "\25BC";
+details[open] > summary .details-marker::before {
+  transform: rotate(90deg);
+  transform-origin: 40% 45% 0;
 }
 ```
