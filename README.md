@@ -1,6 +1,6 @@
 # markdown-it-collapsible
 
-![npm](https://img.shields.io/npm/v/markdown-it-collapsible) [![Node.js CI](https://github.com/Bioruebe/markdown-it-collapsible/actions/workflows/node.js.yml/badge.svg)](https://github.com/Bioruebe/markdown-it-collapsible/actions/workflows/node.js.yml) ![markdown-it](https://img.shields.io/npm/dependency-version/markdown-it-collapsible/peer/markdown-it)
+[![npm](https://img.shields.io/npm/v/markdown-it-collapsible)](https://www.npmjs.com/package/markdown-it-collapsible) [![Node.js CI](https://github.com/Bioruebe/markdown-it-collapsible/actions/workflows/node.js.yml/badge.svg)](https://github.com/Bioruebe/markdown-it-collapsible/actions/workflows/node.js.yml) ![markdown-it](https://img.shields.io/npm/dependency-version/markdown-it-collapsible/peer/markdown-it)
 
 > A markdown-it plugin, which adds collapsibles via the HTML `<details>` and `<summary>` elements
 
