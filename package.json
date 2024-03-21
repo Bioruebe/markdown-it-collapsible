@@ -2,11 +2,26 @@
   "name": "markdown-it-collapsible",
   "version": "2.0.0",
   "description": "A markdown-it plugin, which adds collapsibles via the HTML <details> and <summary> elements",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./*": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/*.js",
+      "import": "./dist/esm/*.js",
+      "default": "./dist/esm/*.js"
+    }
+  },
+  "types": "./dist/types/*.d.ts",
+  "main": "./dist/cjs/index.js",
   "scripts": {
     "dev": "vitest",
-    "build": "tsc",
+    "build": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json && node after-build.js",
     "test": "vitest run",
     "coverage": "vitest run --coverage"
   },
