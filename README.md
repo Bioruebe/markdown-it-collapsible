@@ -25,9 +25,9 @@ import MarkdownItCollapsible from "markdown-it-collapsible";
 const md = new MarkdownIt().use(MarkdownItCollapsible, options);
 
 // CommonJS
-const markdown_it = require("markdown-it");
-const markdown_it_collapsible = require("markdown-it-collapsible");
-const md = markdown_it().use(markdown_it_collapsible, options);
+const MarkdownIt = require("markdown-it");
+const MarkdownItCollapsible = require("markdown-it-collapsible");
+const md = MarkdownIt().use(MarkdownItCollapsible, options);
 ```
 
 ### Syntax
