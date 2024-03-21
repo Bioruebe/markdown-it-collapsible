@@ -1,10 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-	"outDir": "dist",
-	"declaration": true,
+    "outDir": "dist",
+    "declaration": false,
     "useDefineForClassFields": true,
-    "module": "ESNext",
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",
     "strict": true,
@@ -15,7 +13,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-	"types": ["vite/client"]
+    "types": ["vite/client"]
   },
   "include": ["src"]
 }
