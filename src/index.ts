@@ -1,7 +1,7 @@
 import type MarkdownIt from "markdown-it";
 import type Renderer from "markdown-it/lib/renderer";
 import type StateBlock from "markdown-it/lib/rules_block/state_block";
-import Token from "markdown-it/lib/token";
+import type Token from "markdown-it/lib/token";
 
 
 const MARKER = 43; // +
@@ -116,9 +116,9 @@ function parseCollapsible(state: StateBlock, startLine: number, endLine: number,
 
 	// Tokenize the summary content
 	let tokens: Token[] = [];
-	const markerToken = new Token("collapsible_marker", "span", 1);
+	const markerToken = new state.Token("collapsible_marker", "span", 1);
 	markerToken.attrs = [["class", "details-marker"]];
-	const markerTokens = [markerToken, new Token("collapsible_marker", "span", -1)];
+	const markerTokens = [markerToken, new state.Token("collapsible_marker", "span", -1)];
 
 	// It doesn't make sense to have block level elements inside the summary,
 	// except for headings. Thus, a simple check is performed to see if the
