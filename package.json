@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-collapsible",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A markdown-it plugin, which adds collapsibles via the HTML <details> and <summary> elements",
   "type": "module",
   "exports": {
